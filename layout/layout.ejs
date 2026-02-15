@@ -55,15 +55,21 @@ if (theme.style.prefers_theme === 'auto') {
           html += partial('_partial/sidebar/index_leftbar')
         html += `</div>`
       html += `</aside>`
-      html += `<div class="l_main" id="main">`
+      if (page?.custom?.style?.class?.main){
+        html += `<div class="l_main ${page.custom.style.class.main}" id="main">`
+      }else{
+        html += `<div class="l_main" id="main">`
+      }
         html += partial('_partial/sidebar/logo', {where: 'main'})
         html += body
         html += partial('_partial/main/footer')
         html += `<div class="main-mask" onclick="sidebar.dismiss()"></div>`
       html += `</div>`
-      html += `<aside class="l_right">`
+      if (!page?.custom?.post?.hide_right) {
+        html += `<aside class="l_right">`
         html += partial('_partial/sidebar/index_rightbar')
-      html += `</aside>`
+        html += `</aside>`
+      }
       html += partial('_partial/menubtn')
     html += `</div>`
     html += `<div class="scripts">`

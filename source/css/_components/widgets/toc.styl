@@ -52,7 +52,7 @@
     &:hover
       background: var(--block-border)
       color: var(--text)
-    
+
 // 固定位置
 .l_right .widgets .widget-wrapper.toc
   margin-top: 0
@@ -116,8 +116,10 @@
   // 激活上级目录时显示子目录
   .toc a.toc-link.active+ol
     display: block
-  // 鼠标放上去时显示子目录
-  &:hover a.toc-link+ol
+  .widget-header
+  // 鼠标放上去时显示子目录, 排除.widget-footer对子目录的影响, 需JS介入判断或者body滚动固定高度
+  .widget-header:hover ~ .widget-body .toc-item a.toc-link+ol,
+  .widget-body:hover .toc-item a.toc-link+ol
     display: block
 
 // 子目录激活时显示
@@ -127,7 +129,7 @@
   display: block
 
 // 手动折叠
-.widget-wrapper.toc 
+.widget-wrapper.toc
   .widget-body
     display: grid
     grid-template-rows: 1fr
@@ -142,7 +144,7 @@
     grid-template-rows: 0fr
 
 // 编辑本文按钮
-.widget-wrapper.toc .widget-body+.widget-footer:before 
+.widget-wrapper.toc .widget-body+.widget-footer:before
   content: ''
   position absolute
   background: var(--block-border)

@@ -47,6 +47,17 @@ function layoutBreadcrumb() {
   el += partial('dateinfo')
   // end 2.left
   el += `</div>`
+  // 2.right
+  el += `<div class="right">`
+  el += `<div class="flex-row" id="post-meta" style="justify-content: flex-end;">
+            <span class="text updated" id="busuanzi_value_page_pv"></span><span class="text updated"> 阅</span>
+            <span class="sep updated"></span>
+            <span class="text">${wordcount(page.raw)} 字</span>
+            <span class="sep"></span>
+            <span class="text">${min2read(page.raw)} 分</span>
+        </div>`
+  // end 2.right
+  el += `</div>`
   // end 1.main
   el += `</div>`
   return el
@@ -115,13 +126,15 @@ function layoutDiv() {
     }
   }
   el += `
-  <div class="content"${style}>
-    ${top}
-    ${bottom}
-  </div>
-  `
+    <div class="content"${style}>
+      ${top}
+      ${bottom}
+    </div>
+    `
   el += `</div>`
   return el
 }
+
+
 %>
 <%- layoutDiv() %>

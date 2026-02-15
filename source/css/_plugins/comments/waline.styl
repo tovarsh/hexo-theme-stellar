@@ -1,4 +1,4 @@
-.cmt-body
+.cmt-body.waline
   .wl-panel
     margin: 0.5em 0 !important
   .wl-meta-head
@@ -12,14 +12,16 @@
   --waline-theme-color: var(--theme);
   --waline-active-color: var(--accent);
   /* 布局颜色 */
-  --waline-color: #444;
-  --waline-bgcolor: #fff;
-  --waline-bgcolor-light: #f8f8f8;
-  --waline-bgcolor-hover: #f0f0f0;
+  --waline-color: var(--text-p1);
+  --waline-bgcolor: var(--alpha20);
+  --waline-bgcolor-light: var(--alpha50);
+  --waline-bgcolor-hover: var(--alpha70);
   --waline-border-color: #ddd;
   --waline-disable-bgcolor: #f8f8f8;
   --waline-disable-color: #bbb;
   --waline-code-bgcolor: #282c34;
+  --waline-bgcolor-light: transparent !important;
+  --waline-bg-color: var(--alpha20) !important;
   /* 特殊颜色 */
   --waline-bq-color: #f0f0f0;
   /* 头像 */
@@ -37,32 +39,29 @@
   --waline-avatar-radius: 50%;
   --waline-box-shadow: none;
 
-.cmt-body.waline
-  ondark()
-    --waline-white: #000;
-    --waline-light-grey: #666;
-    --waline-dark-grey: #999;
-    /* 布局颜色 */
 
-    --waline-color: #fff;
-    --waline-bgcolor: var(--block);
-    --waline-bgcolor-light: #272727;
-    --waline-border-color: #333;
-    --waline-disable-bgcolor: #444;
-    --waline-disable-color: #272727;
-    /* 特殊颜色 */
-    --waline-bq-color: #272727;
-    /* 其他颜色 */
-    --waline-info-bgcolor: #272727;
-    --waline-info-color: #666;
-    .wl-count
-      padding: .375em;
-      font-weight: bold;
-      font-size: 1.25em;
-      color: #fff;
+//  @media (prefers-color-scheme: dark)
+//    --waline-white: #000;
+//    --waline-light-grey: #666;
+//    --waline-dark-grey: #999;
+//    /* 布局颜色 */
+//
+//    --waline-color: #fff;
+//    --waline-bgcolor: var(--block);
+//    --waline-bgcolor-light: #272727;
+//    --waline-border-color: #333;
+//    --waline-disable-bgcolor: #444;
+//    --waline-disable-color: #272727;
+//    /* 特殊颜色 */
+//    --waline-bq-color: #272727;
+//    /* 其他颜色 */
+//    --waline-info-bgcolor: #272727;
+//    --waline-info-color: #666;
+//
+//.wl-count
+//  @media (prefers-color-scheme: dark)
+//    padding: .375em;
+//    font-weight: bold;
+//    font-size: 1.25em;
+//    color: #fff;
 
-  :root[data-theme="dark"] &
-    ondark()
-  :root:not([data-theme]) &
-    @media (prefers-color-scheme: dark)
-      ondark()
