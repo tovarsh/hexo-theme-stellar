@@ -47,8 +47,8 @@ if (theme.style.prefers_theme === 'auto') {
   html += partial('_partial/head')
   html += `<body>`
     html += site_background
-    html += partial('_partial/cover/index')
-    html += `<div class="l_body s:aa ${page_type} ${article_type} ${page?.custom?.style?.class?.body ? page.custom.style.class.body : ''}" id="start" layout="${page.layout}" type="${article_type}" ${indent ? 'text-indent' : ''}>`
+    html += `<div id="l_cover">${partial('_partial/cover/index')}</div>`
+    html += `<div class="l_body ${page_type}" id="start" layout="${page.layout}" type="${article_type}" ${indent ? 'text-indent' : ''}>`
       html += `<aside class="l_left">`
         html += `<div class="sidebg"></div>`
         html += `<div class="leftbar-container${theme.style.leftbar?.blur ? ' leftbar-blur' : ''}">`

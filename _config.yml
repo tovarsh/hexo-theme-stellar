@@ -518,7 +518,8 @@ data_services:
       '_posts/': # https://github.com/xaoxuu/xaoxuu.com/blob/main/source/_posts/
       'wiki/stellar/': https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/
     js: /js/services/contributors.js
-
+  rss:
+    js: /js/services/rss.js
 
 # 扩展插件接入方法：(插件名下面用 #plugin# 代替)
 # 1. 在这里增加 #plugin# 配置，至少应含有 enable 字段，默认为空（不启用）
@@ -534,6 +535,15 @@ plugins:
     enable: true
     service: flying_pages # flying_pages
     flying_pages: https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js
+
+  # pjax - 无刷新加载
+  # 启用后点击链接将使用 AJAX 加载内容，无需整页刷新
+  pjax:
+    enable: false # 还在测试中，可能存在兼容问题
+    selectors: ['title', '#l_cover', '.l_body'] # 需要替换的元素选择器
+    timeout: 10000 # 请求超时时间（毫秒）
+    cacheBust: false # 是否添加时间戳防止缓存
+    nprogress: true # 是否显示加载进度条
 
   # https://fancyapps.com/docs/ui/fancybox/
   # available for {% image xxx %}
@@ -589,8 +599,8 @@ plugins:
   katex:
     enable: #true # hexo-renderer-markdown-it-plus 默认开启 katex，此选项仅用于引入样式
     inject: |
-      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
-  
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.23/dist/katex.min.css" integrity="sha384-//SZkxyB7axjCAopkAL1E1rve+ZSPKapD89Lo/lLhcsXR+zOYl5z6zJZEFXil+q0" crossorigin="anonymous">
+
   # MathJax
   # 需在Markdown文件开头加入mathjax: true
   # 推荐使用Pandoc: npm uninstall hexo-renderer-marked --save & npm install hexo-renderer-pandoc --save
@@ -673,7 +683,9 @@ style:
     start: 'linear-gradient(to right, hsl(215, 95%, 64%), hsl(195, 95%, 60%), hsl(165, 95%, 56%), hsl(165, 95%, 56%), hsl(195 95% 60%), hsl(215, 95%, 64%))'
   leftbar:
     # 可以设置：纯色/渐变色/图片作为背景
-    background-color: var(--card) # var(--block)
+    # 设置为纯色时，可以分别设置浅色和深色模式背景色
+    background-color-light: var(--card) # var(--block) #'rgb(#C3C3C3)'
+    background-color-dark: var(--card) # var(--block) #'rgb(#3C3C3C)'
     background-image: url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.13/image/sidebar-bg1@small.jpg)
     blur-px: 100px
     blur-bg: var(--bg-a60)
